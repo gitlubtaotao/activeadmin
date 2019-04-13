@@ -56,7 +56,7 @@ module ActiveAdmin
 
     # Runs after the app's AA initializer
     def prepare!
-      remove_active_admin_load_paths_from_rails_autoload_and_eager_load
+      remove_active_admin_load_paths_from_rails_autoload_and_eager_load unless Dependency.supports_zeitwerk?
       attach_reloader
     end
 
