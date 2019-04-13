@@ -56,7 +56,6 @@ module ActiveAdmin
 
     # Runs after the app's AA initializer
     def prepare!
-      remove_active_admin_load_paths_from_rails_autoload_and_eager_load unless Dependency.supports_zeitwerk?
       attach_reloader
     end
 
@@ -168,16 +167,6 @@ module ActiveAdmin
       register_stylesheet 'active_admin.css', media: 'screen'
       register_stylesheet 'active_admin/print.css', media: 'print'
       register_javascript 'active_admin.js'
-    end
-
-    # Since app/admin is alphabetically before app/models, we have to remove it
-    # from the host app's +autoload_paths+ to prevent missing constant errors.
-    #
-    # As well, we have to remove it from +eager_load_paths+ to prevent the
-    # files from being loaded twice in production.
-    def remove_active_admin_load_paths_from_rails_autoload_and_eager_load
-      ActiveSupport::Dependencies.autoload_paths -= load_paths
-      Rails.application.config.eager_load_paths  -= load_paths
     end
 
     # Hook into the Rails code reloading mechanism so that things are reloaded
