@@ -10,3 +10,4 @@ public
 .rails-version
 .rbenv-version
 node_modules
+.idea/
