@@ -46,25 +46,37 @@ module ActiveAdmin
         end
 
         def build_collection
-          if items_in_collection?
+          # if items_in_collection?
             render_index
-          else
-            if params[:q] || params[:scope]
-              render_empty_results
-            else
-              render_blank_slate
-            end
-          end
+          # else
+          #   if params[:q] || params[:scope]
+          #     render_empty_results
+          #   else
+          #     render_blank_slate
+          #   end
+          # end
         end
 
         include ::ActiveAdmin::ViewHelpers::DownloadFormatLinksHelper
 
         def build_table_tools
           div class: "table_tools" do
-            build_batch_actions_selector
+            # build_batch_actions_selector
             build_scopes
+            sidebar sidebar_sections_for_action, id: 'sidebar' unless skip_sidebar?
             build_index_list
-          end if any_table_tools?
+          end
+
+          div id: 'page_more_button' do
+            a class: 'dropdown_menu_button tooltipster', href: 'javascript:void(0);',style: 'position: relative;',title: '自定义表格的列中显示的内容' do
+              '列设置'
+            end
+            div class: 'dropdown_menu column_display_menu' do
+            end
+            a href: 'javascript:void(0);',class: 'table_print' do
+              '打印'
+            end
+          end
         end
 
         def any_table_tools?

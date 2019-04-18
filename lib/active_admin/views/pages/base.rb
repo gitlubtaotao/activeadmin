@@ -40,9 +40,9 @@ module ActiveAdmin
               text_node(javascript_include_tag(path))
             end
 
-            if active_admin_namespace.favicon
-              text_node(favicon_link_tag(active_admin_namespace.favicon))
-            end
+            # if active_admin_namespace.favicon
+            #   text_node(favicon_link_tag(active_admin_namespace.favicon))
+            # end
 
             text_node csrf_meta_tag
           end
@@ -78,8 +78,8 @@ module ActiveAdmin
         def build_page_content
           build_flash_messages
           div id: "active_admin_content", class: (skip_sidebar? ? "without_sidebar" : "with_sidebar") do
+            # sidebar sidebar_sections_for_action, id: 'sidebar' unless skip_sidebar?
             build_main_content_wrapper
-            sidebar sidebar_sections_for_action, id: 'sidebar' unless skip_sidebar?
           end
         end
 
@@ -98,6 +98,9 @@ module ActiveAdmin
             end
           end
         end
+
+
+
 
         # Returns the sidebar sections to render for the current action
         def sidebar_sections_for_action

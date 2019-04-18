@@ -4,6 +4,7 @@ module ActiveAdmin
       # 1. removes `select` and `order` to prevent invalid SQL
       # 2. correctly handles the Hash returned when `group by` is used
       def collection_size(c = collection)
+
         return c.count if c.is_a?(Array)
 
         c = c.except :select, :order

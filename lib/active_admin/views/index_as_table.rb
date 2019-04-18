@@ -251,6 +251,7 @@ module ActiveAdmin
         proc do
           selectable_column
           id_column if resource_class.primary_key
+          index_column
           active_admin_config.resource_columns.each do |attribute|
             column attribute
           end
@@ -270,30 +271,33 @@ module ActiveAdmin
 
         # Display a column for checkbox
         def selectable_column
-          return unless active_admin_config.batch_actions.any?
+          # return unless active_admin_config.batch_actions.any?
           column resource_selection_toggle_cell, class: 'col-selectable', sortable: false do |resource|
             resource_selection_cell resource
           end
         end
 
+
         def index_column(start_value = 1)
-          column '#', class: 'col-index', sortable: false do |resource|
+          column '序号', class: 'col-index', sortable: false do |resource|
             @collection.offset_value + @collection.index(resource) + start_value
           end
         end
 
         # Display a column for the id
         def id_column
-          raise "#{resource_class.name} has no primary_key!" unless resource_class.primary_key
-          column(resource_class.human_attribute_name(resource_class.primary_key), sortable: resource_class.primary_key) do |resource|
-            if controller.action_methods.include?('show')
-              link_to resource.id, resource_path(resource), class: "resource_id_link"
-            elsif controller.action_methods.include?('edit')
-              link_to resource.id, edit_resource_path(resource), class: "resource_id_link"
-            else
-              resource.id
-            end
-          end
+          index_column
+          # raise "#{resource_class.name} has no primary_key!" unless resource_class.primary_key
+          # column(resource_class.human_attribute_name(resource_class.primary_key), sortable: resource_class.primary_key) do |resource|
+          #   if controller.action_methods.include?('show')
+          #     link_to resource.id, resource_path(resource), class: "resource_id_link"
+          #   elsif controller.action_methods.include?('edit')
+          #     link_to resource.id, edit_resource_path(resource), class: "resource_id_link"
+          #   else
+          #     resource.id
+          #   end
+          # end
+
         end
 
         def default_actions

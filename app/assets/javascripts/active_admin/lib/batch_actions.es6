@@ -32,7 +32,7 @@ const onDOMReady = function() {
   // Add checkbox selection to resource tables and lists if batch actions are enabled
   //
 
-  if ($(".batch_actions_selector").length && $(":checkbox.toggle_all").length) {
+  if ($(":checkbox.toggle_all").length) {
 
     if ($(".paginated_collection table.index_table").length) {
       $(".paginated_collection table.index_table").tableCheckboxToggler();
