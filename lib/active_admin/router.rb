@@ -56,7 +56,7 @@ module ActiveAdmin
     end
 
     def resource_routes(config)
-      customer_actions =   config.action_items.size > 1 ? config.defined_actions : [:index]
+      customer_actions =   config.action_items.size >= 1 ? config.defined_actions : [:index,:show]
       router.resources config.resource_name.route_key, only:  customer_actions do
         define_actions(config)
       end
