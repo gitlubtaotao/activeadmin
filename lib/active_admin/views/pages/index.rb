@@ -69,12 +69,12 @@ module ActiveAdmin
 
           div id: 'page_more_button' do
             a class: 'dropdown_menu_button tooltipster', href: 'javascript:void(0);',style: 'position: relative;',title: '自定义表格的列中显示的内容' do
-              '列设置'
+              I18n.t('active_admin.column_setting')
             end
             div class: 'dropdown_menu column_display_menu' do
             end
             a href: 'javascript:void(0);',class: 'table_print' do
-              '打印'
+              I18n.t('active_admin.print')
             end
           end
         end
