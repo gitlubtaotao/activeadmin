@@ -96,7 +96,6 @@ module ActiveAdmin
             scope_options = {
               scope_count: config.fetch(:scope_count, true)
             }
-
             scopes_renderer active_admin_config.scopes, scope_options
           end
         end

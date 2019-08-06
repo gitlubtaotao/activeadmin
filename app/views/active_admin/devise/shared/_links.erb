@@ -10,7 +10,7 @@
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to t('active_admin.devise.links.forgot_your_password'), new_password_path(resource_name) %>
+  <%= link_to t('active_admin.devise.links.forgot_your_password'), new_password_path(resource_name),target: '_blank',id: "forget_pwd" %>
   <br>
 <% end -%>
 
