@@ -60,7 +60,6 @@ module ActiveAdmin
 
             filter_opts = opts.except(:if, :unless)
             filter_opts[:input_html] = instance_exec(&filter_opts[:input_html]) if filter_opts[:input_html].is_a?(Proc)
-
             f.filter attribute, filter_opts
           end
 

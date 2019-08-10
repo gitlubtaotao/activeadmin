@@ -279,7 +279,7 @@ module ActiveAdmin
 
 
         def index_column(start_value = 1)
-          column '序号', class: 'col-index', sortable: false do |resource|
+          column I18n.t('page.common.index_col'), class: 'col-index', sortable: false do |resource|
             @collection.offset_value + @collection.index(resource) + start_value
           end
         end
