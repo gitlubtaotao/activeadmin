@@ -25,7 +25,6 @@ module ActiveAdmin
                   active_filters.filters.each do |filter|
                     li filter.html_options do
                       span do
-                        binding.pry
                         text_node filter.label
                       end
                       b do
