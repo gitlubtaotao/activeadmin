@@ -20,7 +20,7 @@ module ActiveAdmin
         div class: "download_links" do
           span I18n.t('active_admin.download')
           formats.each do |format|
-            a format.upcase, href: 'javascript:void(0);',id: format
+            a format.upcase, href: 'javascript:void(0);',id: "download_"+format.to_s
           end
         end
       end
