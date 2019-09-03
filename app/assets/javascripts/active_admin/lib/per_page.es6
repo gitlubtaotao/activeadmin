@@ -16,10 +16,12 @@
                 ActiveAdmin.turbolinksVisit(params);
             } else {
                 if ($('.pagination_per_page').attr('data-remote') === 'true') {
-                    console.log(ActiveAdmin.toQueryString(params));
+                    var filer_form = $('#new_q');
+                    filer_form.find('#hidden_active_admin_per_page').val(this.element.value);
                     $.ajax({
-                        url: window.location.origin + window.location.pathname + "?" + ActiveAdmin.toQueryString(params),
+                        url: filer_form.attr('action'),
                         type: 'get',
+                        data: filer_form.serializeArray(),
                         dataType: 'script'
                     });
                 } else {
