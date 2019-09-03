@@ -96,7 +96,7 @@ module ActiveAdmin
         options = { theme: 'active_admin' }
         options[:params]     = @params     if @params
         options[:param_name] = @param_name if @param_name
-
+				options[:remote] = true unless active_admin_config.current_filters_enabled?
         if !@display_total && collection.respond_to?(:offset)
           # The #paginate method in kaminari will query the resource with a
           # count(*) to determine how many pages there should be unless
