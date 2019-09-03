@@ -29,13 +29,16 @@ module ActiveAdmin
       def filters=(bool)
         @filters_enabled = bool
       end
-
+      
+      
       # Setter to enable/disable showing current filters on this resource.
       #
       # Set to `nil` to inherit the setting from the namespace
       def current_filters=(bool)
         @current_filters_enabled = bool
       end
+      
+      
 
       # @return [Boolean] If filters are enabled for this resource
       def filters_enabled?

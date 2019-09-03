@@ -77,7 +77,8 @@ module ActiveAdmin
       end
 
       def build_per_page_select
-        div class: "pagination_per_page" do
+	      data_remote = active_admin_config.current_filters_enabled? ? false : true
+	      div class: "pagination_per_page","data-remote": data_remote do
           text_node I18n.t("active_admin.pagination.per_page")
           select do
             @per_page.each do |per_page|

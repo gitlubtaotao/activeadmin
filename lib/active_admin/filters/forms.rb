@@ -51,6 +51,8 @@ module ActiveAdmin
                      html: { class: 'filter_form' } }
         required = { html: { method: :get },
                      as: :q }
+        
+        required[:html][:remote] = true  unless active_admin_config.current_filters_enabled?
         options  = defaults.deep_merge(options).deep_merge(required)
 
         form_for search, options do |f|
