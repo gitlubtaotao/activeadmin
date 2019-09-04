@@ -13,7 +13,18 @@
       if (ActiveAdmin.turbolinks) {
         ActiveAdmin.turbolinksVisit(params);
       } else {
-        window.location.search = ActiveAdmin.toQueryString(params);
+          var currentFilter = $('#new_q');
+          if(currentFilter.attr('data-remote') === 'true'){
+              console.log(ActiveAdmin.toQueryString(params));
+              currentFilter[0].reset();
+              $.ajax({
+                  url: (window.location.origin + window.location.pathname + "?" + ActiveAdmin.toQueryString(params)),
+                  type: 'get',
+                  dataType: 'script',
+              });
+          }else {
+              window.location.search = ActiveAdmin.toQueryString(params);
+          }
       }
     }
 

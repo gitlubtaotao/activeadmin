@@ -46,7 +46,6 @@ module ActiveAdmin
 		def renderer_for(action)
 			active_admin_namespace.view_factory["#{action}_page"]
 		end
-		
 		helper_method :renderer_for
 		
 		def restrict_format_access!
