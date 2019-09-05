@@ -52,19 +52,32 @@ module ActiveAdmin
         end
 
         def build_page
+	        
           within body(class: body_classes) do
+	          
             div id: "wrapper" do
               build_unsupported_browser
-              header active_admin_namespace, current_menu
+              build_menu
               title_bar title, action_items_for_action
               build_page_content
               footer active_admin_namespace
             end
 	          div id: 'top-back',class: 'top-back' do
-		         
 	          end
           end
         end
+        def build_menu
+	        div class: 'head_nav' do
+		        menu_content = red.get("#{current_user.id}_menu_content")
+		        if menu_content.present?
+			        text_node(menu_content.html_safe)
+		        else
+			        content = header active_admin_namespace, current_menu
+			        red.set("#{current_user.id}_menu_content", content.to_s,ex: (Time.now.at_end_of_day - Time.now).to_i)
+		        end
+	        end
+        end
+						
 
         def body_classes
           Arbre::HTML::ClassList.new [
