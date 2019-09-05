@@ -64,7 +64,7 @@ module ActiveAdmin
             filter_opts[:input_html] = instance_exec(&filter_opts[:input_html]) if filter_opts[:input_html].is_a?(Proc)
             f.filter attribute, filter_opts
           end
-
+					f.template.concat content_tag :div,class: 'clear'
           buttons = content_tag :div, class: "buttons" do
             f.submit(I18n.t('active_admin.filters.buttons.filter')) +
               link_to(I18n.t('active_admin.filters.buttons.clear'), '#', class: 'clear_filters_btn') +
