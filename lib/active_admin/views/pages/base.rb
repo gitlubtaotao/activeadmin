@@ -60,6 +60,9 @@ module ActiveAdmin
               build_page_content
               footer active_admin_namespace
             end
+	          div id: 'top-back',class: 'top-back' do
+		         
+	          end
           end
         end
 
