@@ -228,6 +228,7 @@ module ActiveAdmin
     class IndexAsTable < ActiveAdmin::Component
 
       def build(page_presenter, collection)
+	      self.add_class('scrollbar')
         table_options = {
           id: "index_table_#{active_admin_config.resource_name.plural}",
           sortable: true,
