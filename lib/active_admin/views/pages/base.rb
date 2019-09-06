@@ -68,12 +68,12 @@ module ActiveAdmin
         end
         def build_menu
 	        div class: 'head_nav' do
-		        menu_content = red.get("#{current_user.id}_menu_content")
+		        menu_content = red.get("menu_content_#{current_user.id}")
 		        if menu_content.present?
 			        text_node(menu_content.html_safe)
 		        else
 			        content = header active_admin_namespace, current_menu
-			        red.set("#{current_user.id}_menu_content", content.to_s,ex: (Time.now.at_end_of_day - Time.now).to_i)
+			        red.set("menu_content_#{current_user.id}", content.to_s,ex: (Time.now.at_end_of_day - Time.now).to_i)
 		        end
 	        end
         end
