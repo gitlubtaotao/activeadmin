@@ -26,6 +26,10 @@ module ActiveAdmin
           end
         end
 
+        def build_collection
+
+        end
+
         private
 
         def default_form_options
