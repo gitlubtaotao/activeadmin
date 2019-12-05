@@ -73,9 +73,9 @@ module ActiveAdmin
             end
             div class: 'dropdown_menu column_display_menu' do
             end
-            a href: 'javascript:void(0);',class: 'table_print' do
-              I18n.t('active_admin.print')
-            end
+            # a href: 'javascript:void(0);',class: 'table_print' do
+            #   I18n.t('active_admin.print')
+            # end
           end
         end
 
