@@ -94,7 +94,7 @@ module ActiveAdmin
     register :order_clause, ActiveAdmin::OrderClause
 
     # default show_count for scopes
-    register :scopes_show_count, true
+    register :scopes_show_count, false
 
     # Request parameters that are permitted by default
     register :permitted_params, [
